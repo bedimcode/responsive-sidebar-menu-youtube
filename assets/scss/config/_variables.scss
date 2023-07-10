@@ -1,0 +1,43 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root{
+   --header-height: 3.5rem;
+
+   /*========== Colors ==========*/
+   /*Color mode HSL(hue, saturation, lightness)*/
+   --white-color: hsl(210, 32%, 99%);
+   --text-color: hsl(210, 4%, 55%);
+   --dark-color-light: hsla(210, 4%, 4%, .1);
+   --white-color-light: hsla(210, 4%, 99%, .1);
+   --gradient-x: linear-gradient(90deg, 
+               hsla(0, 0%, 0%, 0),
+               hsl(210, 4%, 64%),
+               hsla(0, 0%, 0%, 0));
+   --gradient-y: linear-gradient(0, 
+               hsla(0, 0%, 0%, 0),
+               hsl(210, 4%, 64%),
+               hsla(0, 0%, 0%, 0));
+
+   /*========== Font and typography ==========*/
+   /*.5rem = 8px | 1rem = 16px ...*/
+   --body-font: 'Montserrat', sans-serif;
+
+   --normal-font-size: .938rem;
+   --small-font-size: .813rem;
+
+   // Responsive typography
+   @media screen and (min-width: 1024px){
+      --normal-font-size: 1rem;
+      --small-font-size: .875rem;
+   }
+
+	/*========== Font weight ==========*/
+   --font-medium: 500;
+   --font-semi-bold: 600;
+
+	/*========== z index ==========*/
+   --z-tooltip: 10;
+   --z-fixed: 100;
+}

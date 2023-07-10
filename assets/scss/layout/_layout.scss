@@ -1,0 +1,19 @@
+/*=============== LAYOUT ===============*/
+.container{
+   margin-inline: 1.5rem;
+}
+
+.main{
+   padding-top: 5rem;
+}
+
+.bg-image{
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center;
+   z-index: -1;
+}

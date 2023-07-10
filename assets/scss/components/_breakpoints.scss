@@ -1,0 +1,132 @@
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 300px){
+   .sidebar{
+      width: 232px;
+      padding-inline: 1rem;
+
+      &__account{
+         flex-direction: column;
+         row-gap: .5rem;
+         text-align: center;
+
+         & i{
+            margin: 0;
+         }
+      }
+   }
+}
+
+/* For large devices */
+@media screen and (min-width: 1024px){
+   .header{
+      &__container{
+         height: calc(var(--header-height) + 1.5rem);
+      }
+      &__toggle{
+         font-size: 1.5rem;
+      }
+   }
+
+   .sidebar{
+      left: 0;
+      top: calc(var(--header-height) + 1.5rem);
+      width: 300px;
+      transition: width .4s;
+
+      &__container{
+         padding-bottom: 4rem;
+         overflow: hidden;
+      }
+      &__logo{
+         transition: padding .4s;
+      }
+      &__link{
+         position: relative;
+         padding-inline: 1.5rem;
+         column-gap: 2rem;
+         
+         & i{
+            font-size: 1.5rem;
+         }
+         &-name{
+            transition: color .4s, opacity .4s;
+         }
+      }
+      &__title{
+         position: relative;
+      
+         &::after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--gradient-x);
+            opacity: 0;
+         }
+      }
+      &__account{
+         column-gap: 1rem;
+         padding-left: .5rem;
+         margin-top: auto;
+      }
+      &__logo-text,
+      &__title,
+      &__title::after,
+      &__title span{
+         transition: opacity .4s;
+      }
+      &__link-floating{
+         display: block;
+         font-size: 10px;
+         width: max-content;
+         margin: 0 auto;
+         position: absolute;
+         left: 0;
+         right: 0;
+         bottom: 4px;
+         transition: color .4s, opacity .4s;
+         opacity: 0;
+      }
+   }
+
+   .main{
+      padding-left: 300px;
+      padding-top: 6rem;
+      transition: padding .4s;
+   }
+
+   /* Reduce sidebar */
+   .show-sidebar{
+      width: 120px;
+
+      & .sidebar__logo{
+         padding-left: 1rem;
+      }
+      & .sidebar__logo-text,
+      & .sidebar__link-name{
+         opacity: 0;
+      }
+      & .sidebar__title span{
+         opacity: 0;
+         pointer-events: none;
+      }
+      & .sidebar__title::after{
+         opacity: 1;
+      }
+      & .sidebar__link:hover .sidebar__link-floating{
+         opacity: 1;
+         color: var(--white-color);
+      }
+      & .main{
+         padding-left: 300px;
+      }
+   }
+
+   /* Add padding main */
+   .main-pd{
+      padding-left: 120px;
+   }
+}

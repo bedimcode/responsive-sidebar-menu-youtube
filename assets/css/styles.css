@@ -1,0 +1,438 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --white-color: hsl(210, 32%, 99%);
+  --text-color: hsl(210, 4%, 55%);
+  --dark-color-light: hsla(210, 4%, 4%, .1);
+  --white-color-light: hsla(210, 4%, 99%, .1);
+  --gradient-x: linear-gradient(90deg,
+              hsla(0, 0%, 0%, 0),
+              hsl(210, 4%, 64%),
+              hsla(0, 0%, 0%, 0));
+  --gradient-y: linear-gradient(0,
+              hsla(0, 0%, 0%, 0),
+              hsl(210, 4%, 64%),
+              hsla(0, 0%, 0%, 0));
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Montserrat", sans-serif;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1024px) {
+  :root {
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== LAYOUT ===============*/
+.container {
+  margin-inline: 1.5rem;
+}
+
+.main {
+  padding-top: 5rem;
+}
+
+.bg-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+}
+
+/*=============== HEADER ===============*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--dark-color-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: var(--z-fixed);
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gradient-x);
+}
+
+.header__container {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__toggle {
+  font-size: 1.25rem;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.header__logo {
+  width: 70px;
+}
+
+/*=============== SIDEBAR ===============*/
+.sidebar {
+  position: fixed;
+  left: -100%;
+  top: var(--header-height);
+  width: 280px;
+  height: 100%;
+  padding: 2rem 1.5rem;
+  background-color: var(--dark-color-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: var(--z-fixed);
+  transition: left .4s;
+}
+
+.sidebar::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--gradient-y);
+}
+
+.sidebar__container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  padding-bottom: 3rem;
+  height: 100%;
+}
+
+.sidebar__logo {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  column-gap: .5rem;
+}
+
+.sidebar__logo-img {
+  width: 37px;
+}
+.sidebar__logo-text {
+  width: 76px;
+}
+
+.sidebar__content {
+  position: relative;
+  overflow: auto;
+  padding-top: 2rem;
+}
+
+.sidebar__content::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar__content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gradient-x);
+}
+
+.sidebar__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: .25rem;
+}
+
+.sidebar__link {
+  color: var(--text-color);
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  align-items: center;
+  column-gap: 1.5rem;
+  padding: 1rem;
+  border-radius: .25rem;
+  transition: background .3s;
+}
+
+.sidebar__link-floating {
+  display: none;
+}
+
+.sidebar__link i {
+  color: var(--white-color);
+  font-size: 1.25rem;
+}
+
+.sidebar__link-name {
+  font-weight: var(--font-medium);
+  transition: color .4s;
+}
+
+.sidebar__link:hover {
+  background-color: var(--white-color-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--white-color);
+}
+
+.sidebar__title span {
+  display: block;
+  position: relative;
+  margin-block: 2rem 1.5rem;
+  text-align: center;
+  color: var(--white-color);
+  font-size: var(--normal-font-size);
+}
+
+.sidebar__title span::before, 
+.sidebar__title span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+}
+
+.sidebar__title span::before {
+  background: linear-gradient(90deg, 
+            hsla(0, 0%, 0%, 0), 
+            hsl(210, 4%, 64%));
+  left: 0;
+}
+
+.sidebar__title span::after {
+  background: linear-gradient(90deg, 
+            hsl(210, 4%, 64%), 
+            hsla(0, 0%, 0%, 0));
+  right: 0;
+}
+
+.sidebar__perfil {
+  width: 55px;
+  border-radius: 50%;
+  border: 2px solid var(--white-color);
+}
+
+.sidebar__account {
+  display: flex;
+  align-items: center;
+  column-gap: .5rem;
+}
+
+.sidebar__name {
+  font-size: var(--normal-font-size);
+  color: var(--white-color);
+  margin-bottom: .25rem;
+}
+
+.sidebar__email {
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+}
+
+.sidebar__account i {
+  color: var(--white-color);
+  font-size: 1.5rem;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+/* Show sidebar */
+.show-sidebar {
+  left: 0;
+}
+
+/* Active link */
+.active-link {
+  background-color: var(--white-color-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.active-link span {
+  color: var(--white-color);
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 300px) {
+  .sidebar {
+    width: 232px;
+    padding-inline: 1rem;
+  }
+  .sidebar__account {
+    flex-direction: column;
+    row-gap: .5rem;
+    text-align: center;
+  }
+  .sidebar__account i {
+    margin: 0;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1024px) {
+  .header__container {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+  .header__toggle {
+    font-size: 1.5rem;
+  }
+
+  .sidebar {
+    left: 0;
+    top: calc(var(--header-height) + 1.5rem);
+    width: 300px;
+    transition: width .4s;
+  }
+  .sidebar__container {
+    padding-bottom: 4rem;
+    overflow: hidden;
+  }
+  .sidebar__logo {
+    transition: padding .4s;
+  }
+  .sidebar__link {
+    position: relative;
+    padding-inline: 1.5rem;
+    column-gap: 2rem;
+  }
+  .sidebar__link i {
+    font-size: 1.5rem;
+  }
+  .sidebar__link-name {
+    transition: color .4s, opacity .4s;
+  }
+  .sidebar__title {
+    position: relative;
+  }
+  .sidebar__title::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--gradient-x);
+    opacity: 0;
+  }
+  .sidebar__account {
+    column-gap: 1rem;
+    padding-left: .5rem;
+    margin-top: auto;
+  }
+  .sidebar__logo-text, 
+  .sidebar__title, 
+  .sidebar__title::after, 
+  .sidebar__title span {
+    transition: opacity .4s;
+  }
+  .sidebar__link-floating {
+    display: block;
+    font-size: 10px;
+    width: max-content;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    transition: color .4s, opacity .4s;
+    opacity: 0;
+  }
+
+  .main {
+    padding-left: 300px;
+    padding-top: 6rem;
+    transition: padding .4s;
+  }
+
+  /* Reduce sidebar */
+  .show-sidebar {
+    width: 120px;
+  }
+
+  .show-sidebar .sidebar__logo {
+    padding-left: 1rem;
+  }
+
+  .show-sidebar .sidebar__logo-text,
+  .show-sidebar .sidebar__link-name  {
+    opacity: 0;
+  }
+
+  .show-sidebar .sidebar__title span {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .show-sidebar .sidebar__title::after {
+    opacity: 1;
+  }
+
+  .show-sidebar .sidebar__link:hover .sidebar__link-floating {
+    opacity: 1;
+    color: var(--white-color);
+  }
+  
+  .show-sidebar .main {
+    padding-left: 300px;
+  }
+
+  /* Add padding main */
+  .main-pd {
+    padding-left: 120px;
+  }
+}
