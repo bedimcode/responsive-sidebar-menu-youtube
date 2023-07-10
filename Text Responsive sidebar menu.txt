@@ -1,0 +1,30 @@
+========== SIDEBAR MENU ==========
+.sidebar__link-name .sidebar__link-floating
+Home
+Explore
+Shorts
+Subscription
+
+History
+Watch Later
+Playlists
+Liked Videos
+
+Notifications
+Settings
+Logout
+
+.sidebar__title
+Library
+General
+
+.sidebar__name
+Will Lens
+
+.sidebar__email
+willens@email.com
+
+
+========== MAIN ==========
+h1
+Sidebar Menu
